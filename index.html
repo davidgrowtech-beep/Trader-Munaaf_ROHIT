@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Noto+Sans+Telugu:wght@500;700&display=swap" rel="stylesheet">
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','2868628036839109');fbq('track','PageView');
+fbq('init','2868628036839109');
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2868628036839109&ev=PageView&noscript=1"></noscript>
 <style>
@@ -89,6 +89,21 @@ footer a{color:#FFD400;font-weight:700;text-decoration:none}
 .ib{display:none;background:#FFD400;color:#111;font-size:13px;font-weight:700;padding:9px 12px;text-align:center}
 .ib.show{display:block}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+.rb{position:fixed;left:12px;right:12px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:60;max-width:496px;margin:0 auto;background:#FFD400;color:#111;border-radius:14px;padding:12px 14px;font-weight:700;font-size:13.5px;line-height:1.45;box-shadow:0 8px 28px rgba(0,0,0,.6);display:none}
+.rb small{display:block;font-weight:600;opacity:.85}
+.rb a{display:block;margin-top:8px;background:#04331D;color:#fff;text-align:center;padding:11px;border-radius:10px;font-weight:800;text-decoration:none}
+.nb{margin:16px 0 14px;text-align:left}
+.nb label{display:block;font-size:12.5px;font-weight:700;color:#FFD400;margin-bottom:7px}
+.ni{width:100%;min-height:50px;padding:0 16px;background:var(--card);border:1.5px solid rgba(255,255,255,.16);border-radius:12px;color:#F2FFF8;font:600 14.5px 'Sora','Noto Sans Telugu',sans-serif;outline:none;transition:border-color .2s,box-shadow .2s;-moz-appearance:textfield}
+.ni+.ni{margin-top:9px}
+.ni::-webkit-outer-spin-button,.ni::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.ni::placeholder{color:var(--dim);font-weight:500}
+.ni:focus{border-color:var(--g);box-shadow:0 0 0 3px rgba(0,230,118,.16)}
+.ni.bad{border-color:var(--r)!important;animation:shk .45s ease}
+.ne{display:flex;align-items:center;gap:7px;color:#ff7d93;font-size:12.5px;font-weight:700;max-height:0;opacity:0;overflow:hidden;transition:max-height .25s,opacity .25s,margin .25s}
+.ne.show{max-height:48px;opacity:1;margin-top:9px}
+.ne i{display:inline-flex;width:16px;height:16px;border-radius:50%;background:var(--r);color:#fff;font:900 11px/16px sans-serif;justify-content:center;flex:none;font-style:normal}
+@keyframes shk{10%,90%{transform:translateX(-2px)}20%,80%{transform:translateX(4px)}30%,50%,70%{transform:translateX(-8px)}40%,60%{transform:translateX(8px)}}
 </style>
 </head>
 <body>
@@ -104,6 +119,12 @@ footer a{color:#FFD400;font-weight:700;text-decoration:none}
   <span class="eyebrow te">🔥 ఉచిత మార్కెట్ లెర్నింగ్ • Free Market Learning</span>
   <h1 class="te">స్టాక్ మార్కెట్ నేర్చుకోండి<br><span>Learn Trading Step by Step</span></h1>
   <p class="sub te">తెలుగులో సులభంగా, ప్రాక్టికల్‌గా నేర్చుకోండి. Simple Telugu + English lessons, live market guidance.</p>
+  <div class="nb te">
+   <label for="uName">జాయిన్ అవ్వడానికి ముందు మీ వివరాలు నింపండి · Fill your details before joining</label>
+   <input class="ni" id="uName" type="text" placeholder="మీ పేరు రాయండి · Your name" autocomplete="name">
+   <input class="ni" id="uAge" type="number" placeholder="మీ వయసు రాయండి · Your age" min="1" max="120" inputmode="numeric" autocomplete="off">
+   <div class="ne" id="nErr"><i>!</i><span>ముందు పేరు మరియు వయసు రాయండి, తర్వాత జాయిన్ అవ్వండి · Enter name and age first</span></div>
+  </div>
   <a class="btn" href="https://t.me/+-HZctVS9a7ljMTU1" data-tg>
    <span class="ic"><svg viewBox="0 0 24 24"><path d="M9.8 15.6l-.4 4.2c.6 0 .9-.3 1.2-.6l2.9-2.7 6 4.4c1.1.6 1.9.3 2.2-1L23.9 3.9c.4-1.6-.6-2.2-1.6-1.8L1.6 10c-1.6.6-1.6 1.5-.3 1.9l5.3 1.7 12.3-7.7c.6-.4 1.1-.2.7.2z"/></svg></span>
    <span class="te"><span class="t">Telegram లో జాయిన్ అవ్వండి</span><small>Join Telegram Channel – Free</small></span>
@@ -142,47 +163,154 @@ footer a{color:#FFD400;font-weight:700;text-decoration:none}
  <a class="ob s" id="o2" href="#">Open Telegram Link</a>
  <button class="ob s" id="o3" type="button">Copy Link</button>
 </div></div>
+<div class="rb te" id="rb"></div>
 <script>
 var TG="https://t.me/+-HZctVS9a7ljMTU1",INV="-HZctVS9a7ljMTU1",TGAPP="tg://join?invite="+INV;
+var CFG={
+  ignoreClickMs:1000,   // tap in first 1s: Telegram STILL opens, but no Lead
+  minMovePx:60,         // real scroll / swipe / mouse movement
+  minEngagedMs:1500,    // ...and stay this long after first real movement
+  minDwellMs:3000,      // total VISIBLE time before a tap counts as Lead
+  dedupHours:24,        // one Lead per device per 24h (never blocks Telegram access)
+  reportFiltered:true   // custom "FilteredClick" event with reason (diagnostics only)
+};
 var ua=navigator.userAgent||"";
 var isAnd=/Android/i.test(ua),isIOS=/iPhone|iPad|iPod/i.test(ua)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
 var inApp=/FBAN|FBAV|FB_IAB|FBIOS|Instagram|Messenger/i.test(ua);
+var isBot=navigator.webdriver===true||/bot|crawl|spider|facebookexternalhit|Facebot|TelegramBot|HeadlessChrome|Lighthouse|PhantomJS|Selenium|Puppeteer|Playwright/i.test(ua);
 var btns=[].slice.call(document.querySelectorAll('[data-tg]'));
-var appHref=TGAPP,webHref=TG;
-// Android in-app browser: open Telegram app directly (falls back to normal link)
+var appHref=TG,webHref=TG;
+/* Telegram link is ALWAYS present and ALWAYS works. Filters below only decide the pixel event. */
 if(isAnd&&inApp){
+  // Android in-app: open Telegram app directly (browser_fallback_url = normal link)
   appHref="intent://join?invite="+INV+"#Intent;scheme=tg;package=org.telegram.messenger;S.browser_fallback_url="+encodeURIComponent(TG)+";end";
   webHref="intent://t.me/+"+INV+"#Intent;scheme=https;package=com.android.chrome;end";
   btns.forEach(function(b){b.setAttribute('href',appHref)});
+}else if(isIOS&&inApp){
+  // iOS in-app: universal links do not fire inside FB/IG, so deep-link straight to the app (fallback panel below if it does not open)
+  appHref=TGAPP;webHref=TG;
+  btns.forEach(function(b){b.setAttribute('href',appHref)});
 }
-// iOS in-app browser: ask user to open in real browser (no reliable JS escape)
-if(isIOS&&inApp){document.getElementById('ib').classList.add('show')}
-var tapAt=0,opened=false,leadSent=false,timer=null;
-try{leadSent=sessionStorage.getItem('lead_sent')==='1'}catch(x){}
-function ev(n,custom){try{custom?fbq('trackCustom',n):fbq('track',n)}catch(x){}}
+
+/* ---- persistent de-dupe (localStorage + cookie) ---- */
+var KEY='mn_lead_v2';
+function stored(){var v=null;try{v=localStorage.getItem(KEY)}catch(x){}
+  if(!v){var m=document.cookie.match(/(?:^|; )mn_lead_v2=([^;]*)/);if(m)v=m[1]}return v}
+function already(){var t=parseInt(stored(),10);return !!t&&(Date.now()-t)<CFG.dedupHours*36e5}
+function mark(){var v=String(Date.now());try{localStorage.setItem(KEY,v)}catch(x){}
+  try{document.cookie=KEY+'='+v+'; max-age='+(CFG.dedupHours*3600)+'; path=/; SameSite=Lax'}catch(x){}}
+
+/* ---- engagement tracking ---- */
+var t0=Date.now(),visMs=0,visSince=(document.visibilityState==='visible')?Date.now():0;
+function visibleMs(){return visMs+(visSince?Date.now()-visSince:0)}
+var moved=0,firstMoveAt=0,lastX=null,lastY=null,lastScroll=window.pageYOffset||0,touchedElsewhere=false;
+function addMove(px){if(px<=0)return;moved+=px;if(!firstMoveAt&&moved>=CFG.minMovePx)firstMoveAt=Date.now()}
+window.addEventListener('scroll',function(){var y=window.pageYOffset||0;addMove(Math.abs(y-lastScroll));lastScroll=y},{passive:true});
+function trk(e){var p=(e.touches&&e.touches[0])||e;if(p.clientX==null)return;
+  if(lastX!==null)addMove(Math.abs(p.clientX-lastX)+Math.abs(p.clientY-lastY));lastX=p.clientX;lastY=p.clientY}
+window.addEventListener('pointermove',trk,{passive:true});
+window.addEventListener('touchmove',trk,{passive:true});
+window.addEventListener('touchend',function(){lastX=null;lastY=null},{passive:true});
+window.addEventListener('touchstart',function(e){
+  if(!(e.target&&e.target.closest&&e.target.closest('[data-tg]')))touchedElsewhere=true},{passive:true});
+function filterReason(e){
+  if(e&&e.isTrusted===false)return'untrusted';
+  if(isBot)return'bot';
+  var now=Date.now();
+  if(now-t0<CFG.ignoreClickMs)return'too_fast';
+  if(visibleMs()<CFG.minDwellMs)return'short_dwell';
+  if(!(moved>=CFG.minMovePx||touchedElsewhere))return'no_movement';
+  if(moved>=CFG.minMovePx&&firstMoveAt&&now-firstMoveAt<CFG.minEngagedMs&&!touchedElsewhere)return'short_engage';
+  if(already())return'duplicate';
+  return'';
+}
+
+/* ---- name + age gate: Telegram opens only after the form is filled (commitment step) ---- */
+var nm=document.getElementById('uName'),ag=document.getElementById('uAge'),ne=document.getElementById('nErr'),gateEv=false;
+function gateOk(){
+  var n=(nm.value||'').trim(),a=parseInt(ag.value,10),bad=[];
+  if(n.length<2)bad.push(nm);
+  if(!(a>=1&&a<=120))bad.push(ag);
+  if(!bad.length)return true;
+  bad.forEach(function(i){i.classList.remove('bad');void i.offsetWidth;i.classList.add('bad')});
+  ne.classList.add('show');
+  bad[0].scrollIntoView({behavior:'smooth',block:'center'});
+  try{bad[0].focus({preventScroll:true})}catch(x){bad[0].focus()}
+  return false;
+}
+[nm,ag].forEach(function(i){i.addEventListener('input',function(){
+  i.classList.remove('bad');
+  if((nm.value||'').trim().length>=2&&parseInt(ag.value,10)>=1)ne.classList.remove('show');
+})});
+
+/* ---- qualified PageView (real human only): interaction + 3s, or focused 8s; once per session ---- */
+var pvDone=false,pvHuman=false;
+function sGet(k){try{return sessionStorage.getItem(k)==='1'}catch(x){return false}}
+function sSet(k){try{sessionStorage.setItem(k,'1')}catch(x){}}
+function checkPV(){
+  if(pvDone)return;
+  if(sGet('mn_pv_sent')){pvDone=true;return}
+  if(isBot||document.visibilityState!=='visible')return;
+  var el=Date.now()-t0,byI=pvHuman&&el>=3000,byF=el>=8000&&document.hasFocus();
+  if(!byI&&!byF)return;
+  try{fbq('track','PageView',{qualified_view:true,time_on_page:Math.round(el/1000)},{eventID:'pageview_'+Date.now()+'_'+Math.random().toString(36).slice(2,8)})}catch(x){}
+  pvDone=true;sSet('mn_pv_sent');
+}
+['pointerdown','touchstart','keydown','scroll','mousemove'].forEach(function(n){
+  window.addEventListener(n,function(e){if(e.isTrusted){pvHuman=true;checkPV()}},{passive:true,once:true});
+});
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')checkPV()});
+setTimeout(checkPV,3000);setTimeout(checkPV,8000);
+
+var tapAt=0,opened=false,leadSent=false,reported=false,timer=null,rb=document.getElementById('rb');
+function ev(n,custom,p){try{custom?fbq('trackCustom',n,p||{}):fbq('track',n,p||{})}catch(x){}}
+function osName(){return isAnd?'android':(isIOS?'ios':'other')}
+
+/* Real <a href>: NO preventDefault, NO delay -> Telegram opens instantly. */
 function onTap(e){
-  // NO preventDefault, NO delay: the link navigates instantly like a normal anchor
-  if(e&&e.isTrusted===false)return;
+  if(!gateOk()){
+    if(e&&e.preventDefault)e.preventDefault();
+    if(!gateEv){gateEv=true;ev('GateBlocked',1,{os:osName()})}
+    return;
+  }
   tapAt=Date.now();opened=false;
-  if(!leadSent){
-    leadSent=true;try{sessionStorage.setItem('lead_sent','1')}catch(x){}
+  if(rb)rb.style.display='none';
+  var reason=filterReason(e);
+  if(!reason&&!leadSent){
+    leadSent=true;mark();
     var id='lead_'+Date.now()+'_'+Math.random().toString(36).slice(2,8);
     try{fbq('track','Lead',{content_name:'Telegram Join',content_category:'Munaaf Trader'},{eventID:id});}catch(x){}
+  }else if(reason&&CFG.reportFiltered&&!reported){
+    reported=true;
+    ev('FilteredClick',1,{reason:reason,dwell_ms:Math.round(visibleMs()),moved_px:Math.round(moved)});
   }
-  ev('TG_Tap',1);
+  ev('TG_Tap',1,{os:osName(),in_app:inApp?1:0});
   clearTimeout(timer);
   timer=setTimeout(function(){if(!opened&&!document.hidden)showStuck()},2500);
 }
 function gone(){ // page went to background shortly after tap = Telegram app opened
-  if(tapAt&&!opened&&Date.now()-tapAt<8000){opened=true;clearTimeout(timer);ev('TG_Opened',1)}
+  if(tapAt&&!opened&&Date.now()-tapAt<8000){opened=true;clearTimeout(timer);ev('TG_Opened',1,{os:osName(),in_app:inApp?1:0})}
 }
-document.addEventListener('visibilitychange',function(){if(document.hidden)gone()});
+document.addEventListener('visibilitychange',function(){
+  if(document.hidden){gone();if(visSince){visMs+=Date.now()-visSince;visSince=0}}
+  else{visSince=Date.now();if(tapAt&&Date.now()-tapAt>1500)showReturn()}
+});
 window.addEventListener('pagehide',gone);
 function showStuck(){
   document.getElementById('o1').setAttribute('href',appHref);
   document.getElementById('o2').setAttribute('href',webHref);
   document.getElementById('ov').classList.add('show');
-  ev('TG_Stuck',1);
+  if(isIOS&&inApp)document.getElementById('ib').classList.add('show');
+  ev('TG_Stuck',1,{os:osName(),in_app:inApp?1:0});
+}
+/* user came back from Telegram: most likely did not press "Request to Join" -> remind + reopen (never a 2nd Lead) */
+function showReturn(){
+  if(!rb||document.getElementById('ov').classList.contains('show'))return;
+  rb.innerHTML='Telegram లో <b>“Request to Join”</b> నొక్కారా?<small>Did you tap "Request to Join"? If not, open it again.</small><a href="'+appHref+'" id="rbA">మళ్లీ Telegram తెరవండి · Open Telegram again</a>';
+  rb.style.display='block';
+  ev('TG_Returned',1,{os:osName(),in_app:inApp?1:0});
+  var a=document.getElementById('rbA');
+  if(a)a.addEventListener('click',function(){tapAt=Date.now();opened=false;rb.style.display='none';clearTimeout(timer);timer=setTimeout(function(){if(!opened&&!document.hidden)showStuck()},2500)});
 }
 document.getElementById('o3').addEventListener('click',function(){
   var done=function(){document.getElementById('o3').textContent='Copied ✓ - paste in Telegram/Chrome'};
@@ -190,7 +318,7 @@ document.getElementById('o3').addEventListener('click',function(){
 });
 btns.forEach(function(b){b.addEventListener('click',onTap)});
 window.addEventListener('pageshow',function(e){
-  if(e.persisted){tapAt=0;opened=false;document.getElementById('ov').classList.remove('show')}
+  if(e.persisted&&tapAt){document.getElementById('ov').classList.remove('show');showReturn()}
 });
 // floating candles
 (function(){var h='';for(var i=0;i<18;i++){h+='<i class="'+(Math.random()>.45?'g':'r')+'" style="left:'+(i*5.7+1)+'%;height:'+(35+Math.random()*80|0)+'px;animation-delay:-'+(Math.random()*4).toFixed(2)+'s"></i>'}document.getElementById('cd').innerHTML=h})();
